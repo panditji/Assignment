@@ -1,0 +1,37 @@
+steps:
+  tags:
+    - Steps
+  security:
+    - bearerAuth: []
+  description: Step Count
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            step:
+              type: number
+              required: true
+            stepDate:
+              type: date
+              required: true
+              pattern: /([0-9]{4})-(?:[0-9]{2})-([0-9]{2})/
+              example: '2019-05-17'
+              description: Step Count
+  produces:
+    - application/json
+  responses:
+    201:
+      description: steps created.
+      message: created
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found
+    409:
+      description: duplicate record
+      message: duplicate_record

@@ -1,0 +1,33 @@
+buyProduct:
+  tags:
+    - MarketPlace
+  security:
+    - bearerAuth: []
+  description: MarketPlace buy product Api
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            productItem:
+              type: json
+              required: true
+              example: '  "productItem" : [{ "productsId": "prod_JJZN4I9KF6T3B0", "qty": 0},]'
+              description: MarketPlace buy product Api
+  produces:
+    - application/json
+  responses:
+    201:
+      description: steps created.
+      message: created
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found
+    409:
+      description: duplicate record
+      message: duplicate_record

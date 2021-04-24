@@ -1,0 +1,38 @@
+socialAuth:
+  tags:
+    - Users
+  description: social Auth
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            authId:
+              type: string
+              required: true
+              description: social auth id
+            token:
+              type: string
+              required: false
+              description: social  id_token
+            provider:
+              type: string
+              required: false
+              description: social provider name
+  produces:
+    - application/json
+  responses:
+    201:
+      description: user record.
+      message: created
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found
+    409:
+      description: duplicate record
+      message: duplicate_record

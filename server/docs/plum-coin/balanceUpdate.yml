@@ -1,0 +1,32 @@
+balanceUpdate:
+  tags:
+    - Balance
+  security:
+    - bearerAuth: []
+  description: Update Balance
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            amount:
+              type: number
+              required: true
+              description: amount to update
+  produces:
+    - application/json
+  responses:
+    201:
+      description: balance Updated.
+      message: latestBalance
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found
+    409:
+      description: duplicate record
+      message: duplicate_record

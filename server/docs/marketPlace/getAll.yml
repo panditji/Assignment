@@ -1,0 +1,16 @@
+getAll:
+  tags:
+    - MarketPlace
+  security:
+    - bearerAuth: []
+  description: Get All Products.
+  responses:
+    200:
+      description: MarketPlace Products information.
+      message: Ok
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found

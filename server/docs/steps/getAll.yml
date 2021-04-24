@@ -1,0 +1,16 @@
+getAll:
+  tags:
+    - Steps
+  security:
+    - bearerAuth: []
+  description: Get All Steps for particular user.
+  responses:
+    200:
+      description: Steps Date wise information.
+      message: Ok
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found

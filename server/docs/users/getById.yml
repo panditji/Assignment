@@ -1,0 +1,21 @@
+getById:
+  tags:
+    - Users
+  description: Get User By ID.
+  parameters:
+    - in: path
+      name: userId
+      description: userId aquired at the time of user creation.
+      schema:
+        type: string
+      required: true
+  responses:
+    200:
+      description: User information.
+      message: Ok
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found

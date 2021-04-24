@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: Nodejs-TypeScript-Sequelize-Postgres
+  description: Api specifications.
+  version: 1.0.0
+servers:
+  - url: '{base_url}'
+    variables:
+      base_url:
+        description: >-
+          The base URL of the service. If you are running on localhost then it is most likely http://localhost:9095
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      in: header
+      name: Authorization
+      description: 'To access APIs a valid JWT token must be passed in all requests in the Authorization header.'
+tags:
+  - name: Users
+    description: Users
+  - name: Steps
+    description: Steps
+  - name: Balance
+    description: Balance
+  - name: MarketPlace
+    description: MarketPlace
+paths:
+  /v1/users/auth:
+    post:
+      $ref: './users/socialAuth.yml#/socialAuth'
+  /v1/users/getProfile:
+    get:
+      $ref: './users/getProfile.yml#/getProfile'
+  /v1/steps:
+    post:
+      $ref: './steps/steps.yml#/steps'
+  /v1/steps/get:
+    get:
+      $ref: './steps/getById.yml#/getById'
+  /v1/steps/getAll:
+    get:
+      $ref: './steps/getAll.yml#/getAll'
+  /v1/plumCoin/get:
+    get:
+      $ref: './Nodejs-TypeScript-Sequelize-Postgres/getById.yml#/getById'
+  /v1/plumCoin/updateBalance:
+    post:
+      $ref: './Nodejs-TypeScript-Sequelize-Postgres/balanceUpdate.yml#/balanceUpdate'
+  /v1/marketPlaceProduct/listProducts:
+    get:
+      $ref: './marketPlace/getAll.yml#/getAll'
+  /v1/marketPlaceProduct/buyRequest:
+    post:
+      $ref: './marketPlace/buyRequest.yml#/buyProduct'
+  /v1/marketPlaceProduct/purchaseHistory:
+    get:
+      $ref: './marketPlace/purchaseHistory.yml#/purchaseHistory'
+  /v1/spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
+          content: {}

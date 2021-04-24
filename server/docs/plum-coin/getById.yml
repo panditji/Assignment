@@ -1,0 +1,16 @@
+getById:
+  tags:
+    - Balance
+  security:
+    - bearerAuth: []
+  description: Get Latest Balance By Id, id get by jwt token
+  responses:
+    200:
+      description: Final Balance .
+      message: Ok
+    400:
+      description: Missing or invalid parameters
+      message: validation_failed || invalid_params
+    404:
+      description: record not found
+      message: record not found
